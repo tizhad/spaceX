@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import "../LaunchItem/LaunchItem.css";
 import { useNavigate } from "react-router-dom";
-import { formatDate } from "../../utils/dateFormatterUtils";
+import { formatDate, truncateText } from "../../utils/formatter";
 
 interface LaunchItemProps {
   launch: Launch;
@@ -36,7 +36,7 @@ const LaunchItem: React.FC<LaunchItemProps> = ({ launch, onItemSelect }) => {
         </Stack>
       </CardBody>
       <CardFooter>
-        <Text>{launch.details}</Text>
+        <Text>{truncateText(launch.details, 150)}</Text>{" "}
         <Text>{formatDate(launch.date)}</Text>
       </CardFooter>
     </Card>
