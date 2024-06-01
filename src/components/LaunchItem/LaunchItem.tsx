@@ -12,20 +12,23 @@ import {
 } from "@chakra-ui/react";
 import "../LaunchItem/LaunchItem.css";
 import { useNavigate } from "react-router-dom";
+import { formatDate } from "../../utils/dateFormatterUtils";
 
 interface LaunchItemProps {
   launch: Launch;
+  onItemSelect: (selectedLaunch: Launch) => void;
 }
 
-const LaunchItem: React.FC<LaunchItemProps> = ({ launch }) => {
+const LaunchItem: React.FC<LaunchItemProps> = ({ launch, onItemSelect }) => {
   const navigate = useNavigate();
 
-  const handleItemClick = (id: number) => {
-    navigate(`/detail/${id}`);
+  const handleItemClick = () => {
+    onItemSelect(launch);
+    navigate(`/detail/${launch.id}`);
   };
 
   return (
-    <Card maxW="lg" className="card" onClick={() => handleItemClick(1)}>
+    <Card maxW="lg" className="card" onClick={handleItemClick}>
       <CardBody>
         <Image src={launch.image} alt={launch.name} borderRadius="lg" />
         <Stack mt="6" spacing="5">
@@ -34,7 +37,7 @@ const LaunchItem: React.FC<LaunchItemProps> = ({ launch }) => {
       </CardBody>
       <CardFooter>
         <Text>{launch.details}</Text>
-        <Text>{launch.date}</Text>
+        <Text>{formatDate(launch.date)}</Text>
       </CardFooter>
     </Card>
   );

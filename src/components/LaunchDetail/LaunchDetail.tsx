@@ -1,11 +1,30 @@
-// import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from "react";
+import { Launch } from "../../types/types";
+import { useParams } from "react-router-dom";
+import { getLaunchById } from "../../api/spacex-api";
 
-// interface LaunchDetailProps {}
+const LaunchDetail: FC = () => {
+  const [selectedLaunch, setSelectedLaunch] = useState<Launch | null>(null);
 
-// const LaunchDetail: FC<LaunchDetailProps> = () => (
-//  <LaunchDetailWrapper>
-//     LaunchDetail Component
-//  </LaunchDetailWrapper>
-// );
+  const { id } = useParams();
 
-// export default LaunchDetail;
+  useEffect(() => {
+    if (id) {
+      getSelectedLaunch(id);
+    }
+  }, [id]);
+
+  const getSelectedLaunch = (id: string) => {
+    getLaunchById(id).then((launch) => {
+      setSelectedLaunch(launch);
+    });
+  };
+
+  return (
+    <div className="container">
+      <h1>Launch Detail</h1>
+    </div>
+  );
+};
+
+export default LaunchDetail;

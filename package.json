@@ -14,6 +14,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "axios": "^1.7.2",
+    "date-fns": "^3.6.0",
     "framer-motion": "^11.2.9",
     "generate-react-cli": "^8.4.6",
     "react": "^18.3.1",

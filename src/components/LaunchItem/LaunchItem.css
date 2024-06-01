@@ -1,8 +1,15 @@
 .card {
   background-image: url(https://i.pinimg.com/originals/70/2e/c0/702ec04747431c044bd8370677f16d00.jpg);
-  color: aliceblue !important;
 
   &:hover {
     cursor: pointer;
+  }
+  CardBody {
+    Image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
   }
 }
