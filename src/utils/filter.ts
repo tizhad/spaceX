@@ -1,3 +1,4 @@
+import { isSameDay, parseISO } from "date-fns";
 import { Launch, LaunchStatus } from "../types/types";
 
 export const filterLaunchesByStatus = (
@@ -6,8 +7,6 @@ export const filterLaunchesByStatus = (
 ): Launch[] => {
   return launches.filter((launch) => {
     if (filter === LaunchStatus.success.toLowerCase()) {
-      console.log(launch.success === true);
-
       return launch.success === true;
     } else if (filter === LaunchStatus.upcoming.toLocaleLowerCase()) {
       return launch.upcoming === true;
@@ -15,4 +14,14 @@ export const filterLaunchesByStatus = (
       return true;
     }
   });
+};
+
+export const filterLaunchesByDate = (
+  launches: Launch[],
+  date: string
+): Launch[] => {
+  const selectedDate = parseISO(date);
+  return launches.filter((launch) =>
+    isSameDay(parseISO(launch.date), selectedDate)
+  );
 };
