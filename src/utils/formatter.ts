@@ -15,3 +15,24 @@ export const truncateText = (text: string, maxLength: number): string => {
   }
   return text?.slice(0, maxLength) + "...";
 };
+
+export const formatApiData = (data: any): Launch[] => {
+  return data.map((launch: any) => {
+    return {
+      id: launch.id,
+      name: launch.name,
+      upcoming: launch.upcoming,
+      success: launch.success,
+      patch: launch.links.patch.large,
+      date: launch.date_utc,
+      image: setImage(launch.links.patch.large),
+      details: launch.details,
+    };
+  });
+};
+
+const setImage = (image: string) => {
+  return image
+    ? image
+    : "https://www.lonestarlive.com/resizer/v2/HOD53YNTUZGPTASE4GNL63DQJI.jpeg?auth=a1a1df5cceb42ac21cabf50af36703da1f947bf0d48a841734d987480fcc80e7&width=1280&quality=90";
+};

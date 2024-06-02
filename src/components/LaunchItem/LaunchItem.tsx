@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../index.css";
 import { Launch } from "../../types/types";
 import {
@@ -27,16 +27,26 @@ const LaunchItem: React.FC<LaunchItemProps> = ({ launch, onItemSelect }) => {
     navigate(`/detail/${launch.id}`);
   };
 
+  const launchDetails =
+    launch.details && launch.details.trim().length > 0
+      ? launch.details
+      : "No More Information Available...";
+
   return (
     <Card maxW="lg" className="card" onClick={handleItemClick}>
       <CardBody>
-        <Image src={launch.image} alt={launch.name} borderRadius="lg" />
+        <Image
+          src={launch.image}
+          alt={launch.name}
+          borderRadius="lg"
+          minH={600}
+        />
         <Stack mt="6" spacing="5">
           <Heading size="md">{launch.name}</Heading>
         </Stack>
       </CardBody>
       <CardFooter>
-        <Text>{truncateText(launch.details, 150)}</Text>{" "}
+        <Text>{truncateText(launchDetails, 110)}</Text>{" "}
         <Text>{formatDate(launch.date)}</Text>
       </CardFooter>
     </Card>

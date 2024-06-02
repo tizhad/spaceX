@@ -1,10 +1,12 @@
 import React from "react";
-import Search from "./Search";
+import Filter from "./Filter";
 
-describe("<Search />", () => {
+describe("<Filter />", () => {
   let component;
 
-  beforeEach(() => {});
+  beforeEach(() => {
+    // component = shallow(<Filter />);
+  });
 
   test("It should mount", () => {
     expect(component.length).toBe(1);
