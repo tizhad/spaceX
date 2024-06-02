@@ -63,9 +63,7 @@ const LaunchDetail: FC = () => {
                     <span>{crewMember.agency}</span>
                     <img src={crewMember.image} alt={crewMember.name} />
                     <h4>Status: {crewMember.status}</h4>
-                    <a href={crewMember.wikipedia} target="_blank">
-                      Learn More
-                    </a>
+                    <a href={crewMember.wikipedia}>Learn More</a>
                   </div>
                 ))
               ) : (

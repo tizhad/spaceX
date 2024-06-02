@@ -28,5 +28,3 @@ export const getLaunchRocketData = async (id: string) => {
   const response = await api.get(`/rockets/${id}`);
   return response.data.name;
 };
-
-export {};
