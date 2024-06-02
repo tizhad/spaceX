@@ -31,7 +31,7 @@ export const formatApiData = (data: any): Launch[] => {
   });
 };
 
-const setImage = (image: string) => {
+export const setImage = (image?: string) => {
   return image
     ? image
     : "https://www.lonestarlive.com/resizer/v2/HOD53YNTUZGPTASE4GNL63DQJI.jpeg?auth=a1a1df5cceb42ac21cabf50af36703da1f947bf0d48a841734d987480fcc80e7&width=1280&quality=90";

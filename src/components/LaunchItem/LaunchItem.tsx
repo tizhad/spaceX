@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../../index.css";
 import { Launch } from "../../types/types";
 import {
@@ -11,7 +11,6 @@ import {
   Text,
 } from "@chakra-ui/react";
 import "../LaunchItem/LaunchItem.css";
-import { useNavigate } from "react-router-dom";
 import { formatDate, truncateText } from "../../utils/formatter";
 
 interface LaunchItemProps {
@@ -20,11 +19,8 @@ interface LaunchItemProps {
 }
 
 const LaunchItem: React.FC<LaunchItemProps> = ({ launch, onItemSelect }) => {
-  const navigate = useNavigate();
-
   const handleItemClick = () => {
     onItemSelect(launch);
-    navigate(`/detail/${launch.id}`);
   };
 
   const launchDetails =

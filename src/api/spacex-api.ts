@@ -14,4 +14,19 @@ export const getLaunchById = async (id: string) => {
   return response.data;
 };
 
+export const getCrewData = async (crewIds: string[]) => {
+  const crewData = await Promise.all(
+    crewIds.map(async (id: string) => {
+      const response = await api.get(`/crew/${id}`);
+      return response.data;
+    })
+  );
+  return crewData;
+};
+
+export const getLaunchRocketData = async (id: string) => {
+  const response = await api.get(`/rockets/${id}`);
+  return response.data.name;
+};
+
 export {};

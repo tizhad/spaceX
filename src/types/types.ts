@@ -8,9 +8,21 @@ export interface Launch {
   date: string;
   image: string;
   details: string;
+  crew: Crew[];
+  rocket: string;
 }
 
 export enum LaunchStatus {
   "success" = "SUCCESS",
   "upcoming" = "Upcoming",
+}
+
+export interface Crew {
+  id: string;
+  name: string;
+  agency: string;
+  image: string;
+  wikipedia: string;
+  launches: string[];
+  status: string;
 }
